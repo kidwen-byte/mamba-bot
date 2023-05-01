@@ -1,0 +1,122 @@
+body, html {
+  height: 100%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0deg)
+  }
+
+  100% {
+    transform: rotateZ(360deg)
+  }
+}
+
+.spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}
+
+.spinner svg {
+  width: 60px;
+  height: 60px;
+}
+
+.spinner .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: spin 0.8s infinite linear;
+}
+
+.spinner .circle linearGradient stop {
+  transition: stop-color 1s ease-in-out;
+}
+
+.spinner .circle circle {
+  fill: transparent;
+  stroke: url(#Gradient2);
+  stroke-width: 4px;
+  stroke-dashoffset: 383;
+  stroke-dasharray: 130;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, stroke-dashoffset 1s ease-in-out, stroke-dasharray 1s ease-in-out, stroke 1s ease-in-out;
+}
+
+.spinner.loading .circle circle {
+  opacity: 1;
+  stroke-dashoffset: 445;
+}
+
+.spinner .check {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.spinner .check path {
+  fill: transparent;
+  stroke: #00c669;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  transition: stroke-dashoffset 0.1s ease-in-out;
+  transition-delay: 1s;
+}
+
+.spinner.success .circle linearGradient stop {
+  stop-color: #00c669;
+}
+
+.spinner .error {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.spinner .error path {
+  fill: transparent;
+  stroke: #ff3131;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  transition: stroke-dashoffset 0.1s ease-in-out 1s;
+}
+
+.spinner.success .circle circle,
+.spinner.error .circle circle {
+  stroke: url(#Gradient2);
+  stroke-dasharray: 220;
+  transition-delay: 0.2s;
+}
+
+.spinner.success .check path {
+  stroke-dashoffset: 0;
+}
+
+.spinner.error .error path {
+  stroke-dashoffset: 0;
+}
+
+.spinner.error .circle linearGradient stop {
+  stop-color: #ff3131;
+}
+
+.b-show {
+  animation: showBlock 1.5s linear forwards;
+}
+
+@keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
